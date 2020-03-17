@@ -5,7 +5,6 @@ import com.song.community.dto.GithubUser;
 import com.song.community.mapper.UserMapper;
 import com.song.community.model.User;
 import com.song.community.provide.GithubProvider;
-im
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -54,6 +53,7 @@ public class AuthorizeController {
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());
             user.setGmtModified(user.getGmtCreate());
+            user.setAvatarUrl(githubUser.getAvatar_url());
             userMapper.insert(user);
 
             response.addCookie(new Cookie("token",token));
